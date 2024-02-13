@@ -12,16 +12,19 @@ import javax.swing.JOptionPane;
  * @author Juan CA
  */
 
+import Conexion.ConexionSQL;
 
-
-//hola
 public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
+    
+    ConexionSQL conn = new ConexionSQL();
+    
     public Login() {
         initComponents();
+       
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,8 +38,6 @@ public class Login extends javax.swing.JFrame {
         jPassword = new javax.swing.JPasswordField();
         botonLogin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,14 +83,13 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 240, -1));
 
-        botonLogin.setBackground(new java.awt.Color(255, 255, 255));
         botonLogin.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonLogin.setForeground(new java.awt.Color(51, 51, 51));
         botonLogin.setText("Iniciar sesión");
         botonLogin.setAutoscrolls(true);
         botonLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(255, 255, 255)));
         botonLogin.setBorderPainted(false);
-        botonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonLoginActionPerformed(evt);
@@ -101,13 +101,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Olvidó su contraseña?");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background1.jpeg"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 380, 170));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 330, 160));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, -40, 370, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,10 +157,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton botonLogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

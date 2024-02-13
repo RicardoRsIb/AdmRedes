@@ -16,20 +16,19 @@ import java.sql.SQLException;
 public class ConexionSQL {
     static String bd = "adminredes";
     static String login = "root";
-    static String password = "pass";
-    static String url = "jdbc:mysql://localhost:3306" + bd;
+    static String password = "cello";
+    static String url = "jdbc:mysql://localhost:3306/" + bd;
     Connection connection = null;
 
     public ConexionSQL() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, login, password);
             if (connection != null) {
-                System.out.println("Conexión a bd " + bd + " OK\n");
+                System.out.println("Conexion a bd " + bd + " OK\n");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } catch (Exception ex) {    
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
