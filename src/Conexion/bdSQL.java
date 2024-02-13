@@ -38,6 +38,6 @@ public class bdSQL {
         return id;
     }
 
-   // public static void main(String[] args) {
-    //}
+    public static void main(String[] args) {
+   }
 }
