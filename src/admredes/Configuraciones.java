@@ -25,9 +25,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Configuraciones extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MostrarPDF
-     */
     Tabla_Conf tpdf = new Tabla_Conf();
     String ruta_archivo = "";
     int id = -1;
@@ -224,6 +221,11 @@ public class Configuraciones extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(153, 255, 204));
         jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jTextField1.setText("                                         CONFIGURACIONES");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         btnnuevo.setText("Nuevo");
         btnnuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +294,7 @@ public class Configuraciones extends javax.swing.JFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         String nombre = txtname.getText();
         bdSQL s = new bdSQL();
-        int codigo = s.auto_increment("SELECT MAX(codigopdf) FROM pdf;");
+        int codigo = s.auto_increment("SELECT MAX(Numero) FROM archivosconf;");
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(codigo, nombre, ruta);
@@ -370,6 +372,10 @@ public class Configuraciones extends javax.swing.JFrame {
         txtname.setEnabled(true);
         ruta_archivo = "";
     }//GEN-LAST:event_btnnuevoActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
