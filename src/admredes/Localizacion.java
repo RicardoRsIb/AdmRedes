@@ -22,6 +22,7 @@ public class Localizacion extends javax.swing.JFrame {
 
     public Localizacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
         JPanelImage mImage = new JPanelImage(Croquis1, "src/imagenes/plano2.png");
         Croquis1.add(mImage).repaint();
         Croquis1.setOpaque(false);

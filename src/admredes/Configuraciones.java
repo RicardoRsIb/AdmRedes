@@ -24,13 +24,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author David
  */
 public class Configuraciones extends javax.swing.JFrame {
-
+    
     Tabla_Conf tpdf = new Tabla_Conf();
     String ruta_archivo = "";
     int id = -1;
 
     public Configuraciones() {
         initComponents();
+         this.setLocationRelativeTo(null);
         
         tpdf.visualizar_Pdf(tabla);
         activa_boton(false, false, false);

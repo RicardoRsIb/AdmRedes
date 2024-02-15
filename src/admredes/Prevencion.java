@@ -15,6 +15,7 @@ public class Prevencion extends javax.swing.JFrame {
      */
     public Prevencion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

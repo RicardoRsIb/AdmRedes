@@ -15,6 +15,7 @@ public class FallasSol extends javax.swing.JFrame {
      */
     public FallasSol() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

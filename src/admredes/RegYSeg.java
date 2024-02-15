@@ -15,6 +15,7 @@ public class RegYSeg extends javax.swing.JFrame {
      */
     public RegYSeg() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -18,6 +18,7 @@ public class saladecomputo1 extends javax.swing.JFrame {
      */
     public saladecomputo1() {
         initComponents();
+        this.setLocationRelativeTo(null);
         JPanelImage mImage = new JPanelImage(salaCom1, "src/imagenes/saladecomputo.png");
         salaCom1.add(mImage).repaint();
         salaCom1.setOpaque(false);
