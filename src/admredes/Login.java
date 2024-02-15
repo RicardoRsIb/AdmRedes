@@ -121,10 +121,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
-    
-    }//GEN-LAST:event_UsuarioActionPerformed
-
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
         String user = Usuario.getText();
         String password = new String(jPassword.getPassword());
@@ -140,8 +136,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
-   
+
     }//GEN-LAST:event_jPasswordActionPerformed
+
+    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
+
+    }//GEN-LAST:event_UsuarioActionPerformed
 
     
     public static void main(String args[]) {
