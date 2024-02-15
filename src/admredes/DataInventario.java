@@ -1,14 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package admredes;
 
-/**
- *
- * @author Juan CA
- */ 
-import java.sql.Date;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -16,14 +7,14 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class DataInv {
+public class DataInventario {
     private String fabricante;
     private String modelo;
     private String estado;
     private String ubicacion;
     private String direccionIP;
 
-    public DataInv(String fabricante, String modelo, String estado, String ubicacion, String direccionIP) {
+    public DataInventario(String fabricante, String modelo, String estado, String ubicacion, String direccionIP) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.estado = estado;
@@ -70,4 +61,6 @@ public class DataInv {
     public void setDireccionIP(String direccionIP) {
         this.direccionIP = direccionIP;
     }
+    
 }
+
