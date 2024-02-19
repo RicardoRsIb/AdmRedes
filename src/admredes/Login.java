@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
         String user = Usuario.getText();
         String password = new String(jPassword.getPassword());
-        if (user.equals("admin") && password.equals("secret")) {
+        if (user.equalsIgnoreCase("admin") && password.equals("secret")) {
             JOptionPane.showMessageDialog(this, "Bienvenido, " + user);
             Menu m= new Menu();
             m.setVisible(true);

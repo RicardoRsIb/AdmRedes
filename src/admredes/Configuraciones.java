@@ -5,6 +5,8 @@
  */
 package admredes;
 
+
+import Conexion.ConexionSQL;
 import Conexion.bdSQL;
 import PDF.BotonesPDF;
 import PDF.Tabla_Conf;
@@ -23,11 +25,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author David
  */
+
 public class Configuraciones extends javax.swing.JFrame {
     
     Tabla_Conf tpdf = new Tabla_Conf();
     String ruta_archivo = "";
     int id = -1;
+    ConexionSQL conn = new ConexionSQL();
 
     public Configuraciones() {
         initComponents();

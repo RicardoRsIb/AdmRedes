@@ -16,7 +16,7 @@ public class ConexionSQL {
     
 
     // Librería de MySQL
-    public String driver = "com.mysql.jdbc.Driver";
+    public String driver = "com.mysql.cj.jdbc.Driver";
 
     // Nombre de la base de datos
     public String database = "adminredes";
@@ -34,7 +34,7 @@ public class ConexionSQL {
     public String username = "root";
 
     // Clave de usuario
-    public String password = "pass";
+    public String password = "cello";
     Connection conn = null;
 
     public Connection getConnection() {
