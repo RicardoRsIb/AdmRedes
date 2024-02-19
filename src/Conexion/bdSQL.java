@@ -25,7 +25,7 @@ public class bdSQL {
                 id=res.getInt(1) + 1;
             }
         } catch (Exception ex) {
-            System.out.println("idmax" + ex.getMessage());
+            System.out.println("idmax " + ex.getMessage());
             id=1;
         } finally {
             try {

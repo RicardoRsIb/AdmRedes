@@ -62,33 +62,3 @@ public class ConexionSQL {
         }
     }
 }
-//    static String bd = "adminredes";
-//    static String login = "root";
-//    static String password = "pass";
-//    static String url = "jdbc:mysql://localhost:3306/" + bd;
-//    Connection connection = null;
-//
-//    public ConexionSQL() {
-//        try {
-//            connection = DriverManager.getConnection(url, login, password);
-//            if (connection != null) {
-//                System.out.println("Conexion a bd " + bd + " OK\n");
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-//
-//    public Connection getConnection() {
-//        return connection;
-//    }
-//    public void desconectar() {
-//        try {
-//            
-//            connection.close();
-//        } catch (Exception ex) {
-//        }
-//    }
-

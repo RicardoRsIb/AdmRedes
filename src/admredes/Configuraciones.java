@@ -39,7 +39,6 @@ public class Configuraciones extends javax.swing.JFrame {
     }
 
     public void guardar_pdf(int numero, String nombre, File ruta) {
-        numero++;
         BotonesPDF pa = new BotonesPDF();
         PdfObtenerSQL po = new PdfObtenerSQL();
         po.setNumeropdf(numero);
@@ -307,7 +306,7 @@ public class Configuraciones extends javax.swing.JFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         String nombre = txtname.getText();
         bdSQL s = new bdSQL();
-        int codigo = s.auto_increment("SELECT MAX(Numero) FROM archivosconf;");
+        int codigo = s.auto_increment("SELECT MAX(id) FROM archivosconf;");
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(codigo, nombre, ruta);

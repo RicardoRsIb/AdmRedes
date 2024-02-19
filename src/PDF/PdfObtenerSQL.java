@@ -22,8 +22,8 @@ public class PdfObtenerSQL {
 
 
     /*Todo los codigos set*/
-    public void setNumeropdf(int codigo) {
-        this.Numero = codigo;
+    public void setNumeropdf(int id) {
+        this.Numero = id;
     }
 
     public void setNombrepdf(String nombre) {
