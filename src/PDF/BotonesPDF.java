@@ -50,7 +50,7 @@ public class BotonesPDF {
     /*Metodo agregar*/
     public void Agregar_Pdf(PdfObtenerSQL vo) {
         ConexionSQL conec = new ConexionSQL();
-        String sql = "INSERT INTO pdf (codigopdf, nombrepdf, archivopdf) VALUES(?, ?, ?);";
+        String sql = "INSERT INTO archivosconf (codigopdf, nombrepdf, archivopdf) VALUES(?, ?, ?);";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);
@@ -75,7 +75,7 @@ public class BotonesPDF {
     /*Metodo Modificar*/
     public void Modificar_Pdf(PdfObtenerSQL vo) {
         ConexionSQL conec = new ConexionSQL();
-        String sql = "UPDATE pdf SET nombrepdf = ?, archivopdf = ? WHERE codigopdf = ?;";
+        String sql = "UPDATE archivosconf SET nombrepdf = ?, archivopdf = ? WHERE codigopdf = ?;";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);
@@ -98,7 +98,7 @@ public class BotonesPDF {
 
     public void Modificar_Pdf2(PdfObtenerSQL vo) {
         ConexionSQL conec = new ConexionSQL();
-        String sql = "UPDATE pdf SET nombre = ? WHERE codigo = ?;";
+        String sql = "UPDATE archivosconf SET nombrepdf = ? WHERE codigopdf = ?;";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);
@@ -121,7 +121,7 @@ public class BotonesPDF {
     /*Metodo Eliminar*/
     public void Eliminar_Pdf(PdfObtenerSQL vo) {
         ConexionSQL conec = new ConexionSQL();
-        String sql = "DELETE FROM pdf WHERE Numero = ?;";
+        String sql = "DELETE FROM archivosconf WHERE codigopdf = ?;";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);
@@ -149,7 +149,7 @@ public class BotonesPDF {
         byte[] b = null;
 
         try {
-            ps = cn.getConnection().prepareStatement("SELECT archivo FROM archivosconf WHERE Numero = ?;");
+            ps = cn.getConnection().prepareStatement("SELECT archivopdf from archivosconf WHERE codigopdf = ?;");
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {

@@ -33,12 +33,13 @@ public class Configuraciones extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
         
-        tpdf.visualizar_Pdf(tabla);
+        tpdf.visualizar_Pdf(pdf);
         activa_boton(false, false, false);
         txtname.setEnabled(false);
     }
 
     public void guardar_pdf(int numero, String nombre, File ruta) {
+        numero++;
         BotonesPDF pa = new BotonesPDF();
         PdfObtenerSQL po = new PdfObtenerSQL();
         po.setNumeropdf(numero);
@@ -128,7 +129,7 @@ public class Configuraciones extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         btnnuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        pdf = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guardar y Leer PDF");
@@ -246,7 +247,7 @@ public class Configuraciones extends javax.swing.JFrame {
             }
         });
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        pdf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -257,12 +258,12 @@ public class Configuraciones extends javax.swing.JFrame {
                 "Numero", "Nombre", "Archivo"
             }
         ));
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+        pdf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMouseClicked(evt);
+                pdfMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(pdf);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -310,7 +311,7 @@ public class Configuraciones extends javax.swing.JFrame {
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(codigo, nombre, ruta);
-            tpdf.visualizar_Pdf(tabla);
+            tpdf.visualizar_Pdf(pdf);
             ruta_archivo = "";
             activa_boton(false, false, false);
             txtname.setEnabled(false);
@@ -324,10 +325,10 @@ public class Configuraciones extends javax.swing.JFrame {
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             modificar_pdf(id, nombre, ruta);
-            tpdf.visualizar_Pdf(tabla);
+            tpdf.visualizar_Pdf(pdf);
         } else if (ruta_archivo.trim().length() == 0) {
             modificar_pdf(id, nombre);
-            tpdf.visualizar_Pdf(tabla);
+            tpdf.visualizar_Pdf(pdf);
         }
         ruta_archivo = "";
         activa_boton(false, false, false);
@@ -335,14 +336,14 @@ public class Configuraciones extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnmodificarActionPerformed
 
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        int column = tabla.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY() / tabla.getRowHeight();
+    private void pdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pdfMouseClicked
+        int column = pdf.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / pdf.getRowHeight();
         activa_boton(false, true, true);
         txtname.setEnabled(true);
-        if (row < tabla.getRowCount() && row >= 0 && column < tabla.getColumnCount() && column >= 0) {
-            id = (int) tabla.getValueAt(row, 0);
-            Object value = tabla.getValueAt(row, column);
+        if (row < pdf.getRowCount() && row >= 0 && column < pdf.getColumnCount() && column >= 0) {
+            id = (int) pdf.getValueAt(row, 0);
+            Object value = pdf.getValueAt(row, column);
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 JButton boton = (JButton) value;
@@ -359,15 +360,15 @@ public class Configuraciones extends javax.swing.JFrame {
                 }
 
             } else {
-                String name = "" + tabla.getValueAt(row, 1);
+                String name = "" + pdf.getValueAt(row, 1);
                 txtname.setText(name);
             }
         }
-    }//GEN-LAST:event_tablaMouseClicked
+    }//GEN-LAST:event_pdfMouseClicked
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         eliminar_pdf(id);
-        tpdf.visualizar_Pdf(tabla);
+        tpdf.visualizar_Pdf(pdf);
         activa_boton(false, false, false);
         txtname.setEnabled(false);
         ruta_archivo = "";
@@ -445,7 +446,7 @@ public class Configuraciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable pdf;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }
