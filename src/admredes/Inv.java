@@ -6,20 +6,28 @@ package admredes;
  */
 
 import admredes.DataInventario;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -46,7 +54,9 @@ public class Inv extends JFrame {
     private DefaultTableModel modeloTabla;
     private JScrollPane panelTabla;
 
-    // Crear el constructor de la clase
+
+    private boolean modificar = false;
+    BufferedImage imagenFondo = null;
     public Inv() {
         // Inicializar los componentes de la interfaz
         etiquetaFabricante = new JLabel("Fabricante:");
@@ -69,7 +79,7 @@ public class Inv extends JFrame {
 
         // Configurar la ventana
         setTitle("Inventario de la red");
-        setSize(800, 600);
+        setSize(800, 900);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
@@ -78,9 +88,9 @@ public class Inv extends JFrame {
         // Añadir los componentes a la ventana
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 30, 10, 30);
+        gbc.insets = new Insets(10, 10, 10, 10);
         add(etiquetaFabricante, gbc);
-
+        //ubicacion de los textfield
         gbc.gridx = 1;
         gbc.gridy = 0;
         add(campoFabricante, gbc);
@@ -157,9 +167,9 @@ public class Inv extends JFrame {
         Connection conexion = null;
         try {
             // Cargar el driver de MySQL
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventario", "root", "comeasyouH3Y");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
             // Crear un objeto Statement para ejecutar consultas SQL
             Statement sentencia = conexion.createStatement();
             // Ejecutar una consulta SQL para obtener los datos del inventario
@@ -186,6 +196,38 @@ public class Inv extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+
+        //Crear un objeto BufferedImage que contenga la imagen de fondo
+        //BufferedImage imagenFondo = null;
+//        try {
+//            //Cargar la imagen desde un recurso
+//            imagenFondo = ImageIO.read(getClass().getResource("inv.png"));
+//        } catch (IOException e) {
+//            //Mostrar un mensaje de error si ocurre alguna excepción
+//            JOptionPane.showMessageDialog(this, "Error al cargar la imagen de fondo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+
+//        //Crear un objeto JPanel que contenga la imagen de fondo
+//        JPanel panelFondo = new JPanel() {
+//            //Sobrescribir el método paintComponent
+//            @Override
+//            public void paintComponent(Graphics g) {
+//                //Llamar al método paintComponent de la clase padre
+//                super.paintComponent(g);
+//                //Verificar que el objeto Graphics sea de tipo Graphics2D
+//                if (g instanceof Graphics2D) {
+//                    //Casting del objeto Graphics a Graphics2D
+//                    Graphics2D g2 = (Graphics2D) g;
+//                    //Dibujar la imagen de fondo en el panel
+//                    g2.drawImage(imagenFondo, 0, 0, this);
+//                }
+//            }
+//        };
+
+        //Añadir el panel con la imagen de fondo a la ventana
+//        add(panelFondo);
+
+
         // Añadir los listeners a los botones
         botonAgregar.addActionListener(new ActionListener() {
             @Override
@@ -211,13 +253,13 @@ public class Inv extends JFrame {
                     Connection conexion = null;
                     try {
                         // Cargar el driver de MySQL
-                        Class.forName("com.mysql.jdbc.Driver");
+                        Class.forName("com.mysql.cj.jdbc.Driver");
                         // Establecer la conexión con la base de datos
-                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventario", "root", "1234");
+                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
                         // Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
-                        PreparedStatement sentencia = conexion.prepareStatement("INSERT INTO inventario (fabricante, modelo, estado, ubicacion, direccionIP) VALUES (?, ?, ?, ?, ?)");
+                        PreparedStatement sentencia = conexion.prepareStatement("INSERT INTO inventario (fabricante,modelo,estado,ubicacion,direccionIP) VALUES (?,?,?,?,?)");
                         // Asignar los valores a los parámetros de la consulta
-                        sentencia.setString(1, inventario.getFabricante());
+                        sentencia.setString(1, inventario.getFabricante()); 
                         sentencia.setString(2, inventario.getModelo());
                         sentencia.setString(3, inventario.getEstado());
                         sentencia.setString(4, inventario.getUbicacion());
@@ -244,6 +286,149 @@ public class Inv extends JFrame {
                 }
             }
         });
+    
+
+    //Crear el listener para el botón de modificar
+    botonModificar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            
+            //Verificar el estado del botón de modificar
+            if (!modificar) {
+                //Si el botón está deshabilitado, copiar los datos de la fila seleccionada en los campos de texto
+                //Obtener el índice de la fila seleccionada en la tabla
+                int fila = tablaInventario.getSelectedRow();
+                //Verificar que se haya seleccionado una fila
+                if (fila != -1) {
+                    //Obtener los datos de la fila seleccionada usando el modelo de la tabla
+                    String fabricante = modeloTabla.getValueAt(fila, 0).toString();
+                    String modelo = modeloTabla.getValueAt(fila, 1).toString();
+                    String estado = modeloTabla.getValueAt(fila, 2).toString();
+                    String ubicacion = modeloTabla.getValueAt(fila, 3).toString();
+                    String direccionIP = modeloTabla.getValueAt(fila, 4).toString();
+                    //Asignar los datos a los campos de texto
+                    campoFabricante.setText(fabricante);
+                    campoModelo.setText(modelo);
+                    campoEstado.setText(estado);
+                    campoUbicacion.setText(ubicacion);
+                    campoDireccionIP.setText(direccionIP);
+                    //Habilitar el botón de modificar
+                    botonModificar.setEnabled(true);
+                    //Cambiar el estado del botón de modificar a verdadero
+                    modificar = true;
+                } else {
+                    //Mostrar un mensaje de advertencia si no se seleccionó una fila
+                    JOptionPane.showMessageDialog(Inv.this, "Debe seleccionar una fila de la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } else
+                {
+                //Si el botón está habilitado, actualizar los datos en la base de datos y en la tabla
+                //Obtener el índice de la fila seleccionada en la tabla
+                int fila = tablaInventario.getSelectedRow();
+                //Obtener los datos de los campos de texto
+                String fabricante = campoFabricante.getText(); 
+                String modelo = campoModelo.getText();
+                String estado = campoEstado.getText();
+                String ubicacion = campoUbicacion.getText();
+                String direccionIP = campoDireccionIP.getText();
+                //Crear la conexión con la base de datos
+                Connection conexion = null;
+                try {
+                    //Cargar el driver de MySQL
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    //Establecer la conexión con la base de datos
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+                    //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
+                    PreparedStatement sentencia = conexion.prepareStatement("UPDATE inventario SET fabricante = ?, modelo = ?, estado = ?, ubicacion = ?, direccionIP = ? WHERE fabricante = ?");
+                    //Asignar los valores a los parámetros de la consulta
+                    sentencia.setString(1, fabricante);
+                    sentencia.setString(2, modelo);
+                    sentencia.setString(3, estado);
+                    sentencia.setString(4, ubicacion);
+                    sentencia.setString(5, direccionIP);
+                    //Obtener el valor del fabricante original de la fila seleccionada
+                    String fabricanteOriginal = modeloTabla.getValueAt(fila, 0).toString();
+                    //Asignar el valor del fabricante original al último parámetro de la consulta
+                    sentencia.setString(6, fabricanteOriginal);
+                    //Ejecutar la consulta SQL para actualizar los datos en la base de datos
+                    int filas = sentencia.executeUpdate();
+                    //Mostrar un mensaje de éxito si se actualizaron los datos
+                    if (filas > 0) {
+                        JOptionPane.showMessageDialog(Inv.this, "Se modificó el registro del inventario", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                        //Actualizar los datos en la tabla
+                        modeloTabla.setValueAt(fabricante, fila, 0);
+                        modeloTabla.setValueAt(modelo, fila, 1);
+                        modeloTabla.setValueAt(estado, fila, 2);
+                        modeloTabla.setValueAt(ubicacion, fila, 3);
+                        modeloTabla.setValueAt(direccionIP, fila, 4);
+                    }
+                    //Cerrar la sentencia y la conexión
+                    sentencia.close();
+                    conexion.close();
+                } catch (Exception e) {
+                    //Mostrar un mensaje de error si ocurre alguna excepción
+                    JOptionPane.showMessageDialog(Inv.this, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                //Deshabilitar el botón de modificar
+                botonModificar.setEnabled(false);
+                //Cambiar el estado del botón de modificar a falso
+                modificar = false;
+            }
+        }
+    });
+
+
+    //Crear el listener para el botón de eliminar
+    botonEliminar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            //Obtener el índice de la fila seleccionada en la tabla
+            int fila = tablaInventario.getSelectedRow();
+            //Verificar que se haya seleccionado una fila
+            if (fila != -1) {
+                //Obtener el dato que identifica al registro, por ejemplo, el fabricante
+                String fabricante = modeloTabla.getValueAt(fila, 0).toString();
+                //Crear la conexión con la base de datos
+                Connection conexion = null;
+                try {
+                    //Cargar el driver de MySQL
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    //Establecer la conexión con la base de datos
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+                    //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
+                    PreparedStatement sentencia = conexion.prepareStatement("DELETE FROM inventario WHERE fabricante = ?");
+                    //Asignar el valor al parámetro de la consulta
+                    sentencia.setString(1, fabricante);
+                    //Ejecutar la consulta SQL para eliminar el registro de la base de datos
+                    int filas = sentencia.executeUpdate();
+                    //Mostrar un mensaje de éxito si se eliminó el registro
+                    if (filas > 0) {
+                        JOptionPane.showMessageDialog(Inv.this, "Se eliminó el registro del inventario", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        //Eliminar la fila de la tabla
+                        modeloTabla.removeRow(fila);
+                    }
+                    //Cerrar la sentencia y la conexión
+                    sentencia.close();
+                    conexion.close();
+                } catch (Exception e) {
+                    //Mostrar un mensaje de error si ocurre alguna excepción
+                    JOptionPane.showMessageDialog(Inv.this, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                //Mostrar un mensaje de advertencia si no se seleccionó una fila
+                JOptionPane.showMessageDialog(Inv.this, "Debe seleccionar una fila de la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    });
+
+    botonRegresar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            Menu m = new Menu();
+            m.setVisible(true); 
+            Inv.this.setVisible(false);
+        }
+    });
     }
     
     public static void main(String[] args) {
