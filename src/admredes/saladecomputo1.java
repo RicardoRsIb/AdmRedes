@@ -19,7 +19,7 @@ public class saladecomputo1 extends javax.swing.JFrame {
     public saladecomputo1() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(salaCom1, "src/imagenes/saladecomputo.png");
+        JPanelImage mImage = new JPanelImage(salaCom1, "src/imagenes/saladecomputo1.png");
         salaCom1.add(mImage).repaint();
         salaCom1.setOpaque(false);
         salaCom1.setBorder(null);
@@ -62,10 +62,25 @@ public class saladecomputo1 extends javax.swing.JFrame {
         });
 
         jButton2.setText("Computadora 1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Computadora 2");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Computadora 3");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,8 +124,32 @@ public class saladecomputo1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC0"
                 + "\nModelo del dispositivo: PC-PT"
                 + "\nFastEthernet0"
-                + "\nIP: 169.254.185.75/16");
+                + "\nIP: 192.168.10.1/24");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC1"
+                + "\nModelo del dispositivo: PC-PT"
+                + "\nFastEthernet0"
+                + "\nIP: 192.168.10.2/24");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC2"
+                + "\nModelo del dispositivo: PC-PT"
+                + "\nFastEthernet0"
+                + "\nIP: 192.168.10.3/24");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC3"
+                + "\nModelo del dispositivo: PC-PT"
+                + "\nFastEthernet0"
+                + "\nIP: 192.168.10.4/24");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -19,11 +19,14 @@ public class Localizacion extends javax.swing.JFrame {
      * Creates new form Localizacion
      */
     saladecomputo1 loca = new saladecomputo1();
+    Oficina1 of1 = new Oficina1();
+    SalaReunion salaRe = new SalaReunion();
+    
 
     public Localizacion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(Croquis1, "src/imagenes/plano2.png");
+        JPanelImage mImage = new JPanelImage(Croquis1, "src/imagenes/plano4.png");
         Croquis1.add(mImage).repaint();
         Croquis1.setOpaque(false);
         Croquis1.setBorder(null);
@@ -43,6 +46,12 @@ public class Localizacion extends javax.swing.JFrame {
         Croquis1 = new javax.swing.JPanel();
         SC1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        SC2 = new javax.swing.JButton();
+        SR = new javax.swing.JButton();
+        Of1 = new javax.swing.JButton();
+        Of2 = new javax.swing.JButton();
+        Of3 = new javax.swing.JButton();
+        Entrada = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +83,33 @@ public class Localizacion extends javax.swing.JFrame {
             }
         });
 
+        SC2.setText("Sala C. 2");
+        SC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SC2ActionPerformed(evt);
+            }
+        });
+
+        SR.setText("Sala Reunión");
+        SR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SRActionPerformed(evt);
+            }
+        });
+
+        Of1.setText("Oficina 1");
+        Of1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Of1ActionPerformed(evt);
+            }
+        });
+
+        Of2.setText("Oficina 2");
+
+        Of3.setText("Oficina 3");
+
+        Entrada.setText("Entrada");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,18 +119,29 @@ public class Localizacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(SC1)
-                        .addGap(921, 921, 921))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SC2)
+                        .addGap(18, 18, 18)
+                        .addComponent(SR)
+                        .addGap(18, 18, 18)
+                        .addComponent(Of1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Of2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Of3)
+                        .addGap(18, 18, 18)
+                        .addComponent(Entrada)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 7, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(269, 269, 269))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Croquis1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addContainerGap())))))
+                            .addComponent(Croquis1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(355, 355, 355)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +149,14 @@ public class Localizacion extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(SC1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SC1)
+                    .addComponent(SC2)
+                    .addComponent(SR)
+                    .addComponent(Of1)
+                    .addComponent(Of2)
+                    .addComponent(Of3)
+                    .addComponent(Entrada))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -124,6 +178,21 @@ public class Localizacion extends javax.swing.JFrame {
         men.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Of1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Of1ActionPerformed
+        // TODO add your handling code here:
+        of1.setVisible(true);
+    }//GEN-LAST:event_Of1ActionPerformed
+
+    private void SC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SC2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_SC2ActionPerformed
+
+    private void SRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SRActionPerformed
+        // TODO add your handling code here:
+        salaRe.setVisible(true);
+    }//GEN-LAST:event_SRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +231,13 @@ public class Localizacion extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Croquis1;
+    private javax.swing.JButton Entrada;
+    private javax.swing.JButton Of1;
+    private javax.swing.JButton Of2;
+    private javax.swing.JButton Of3;
     private javax.swing.JButton SC1;
+    private javax.swing.JButton SC2;
+    private javax.swing.JButton SR;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

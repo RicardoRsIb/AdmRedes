@@ -59,7 +59,6 @@ public class Login extends javax.swing.JFrame {
         Usuario.setBackground(new java.awt.Color(51, 51, 51));
         Usuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Usuario.setForeground(new java.awt.Color(204, 204, 204));
-        Usuario.setText("Usuario");
         Usuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 255)));
         Usuario.setCaretColor(new java.awt.Color(102, 102, 102));
         Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +99,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(botonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 80, 20));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Olvidó su contraseña?");
+        jLabel5.setText("¿Olvidó su contraseña?");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 330, 160));
