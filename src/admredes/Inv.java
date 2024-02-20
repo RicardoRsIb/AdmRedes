@@ -27,6 +27,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -38,6 +39,9 @@ public class Inv extends JFrame {
     // Declarar los componentes de la interfaz
     private JLabel etiquetaFabricante;
     private JLabel etiquetaModelo;
+    private JLabel etiquetaBuscar;
+    private JTextField campoBuscar;
+    private JButton botonBuscar;
     private JLabel etiquetaEstado;
     private JLabel etiquetaUbicacion;
     private JLabel etiquetaDireccionIP;
@@ -64,15 +68,18 @@ public class Inv extends JFrame {
         etiquetaEstado = new JLabel("Estado:");
         etiquetaUbicacion = new JLabel("Ubicación:");
         etiquetaDireccionIP = new JLabel("Dirección IP:");
+        etiquetaBuscar = new JLabel("Buscar por dirección IP:");
         campoFabricante = new JTextField(15);
         campoModelo = new JTextField(15);
         campoEstado = new JTextField(15);
         campoUbicacion = new JTextField(15);
         campoDireccionIP = new JTextField(15);
+        campoBuscar = new JTextField(15);
         botonAgregar = new JButton("Agregar");
         botonRegresar= new JButton("Regresar");
         botonModificar = new JButton("Modificar");
         botonEliminar = new JButton("Eliminar");
+        botonBuscar = new JButton("Buscar");
         tablaInventario = new JTable();
         modeloTabla = new DefaultTableModel();
         panelTabla = new JScrollPane(tablaInventario);
@@ -94,6 +101,21 @@ public class Inv extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 0;
         add(campoFabricante, gbc);
+        
+        
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        add(etiquetaBuscar, gbc);
+
+        //Añadir el campoBuscar al panel
+        gbc.gridx = 3;
+        gbc.gridy = 1;
+        add(campoBuscar, gbc);
+
+        //Añadir el botonBuscar al panel
+        gbc.gridx = 3;
+        gbc.gridy = 2;
+        add(botonBuscar, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -169,7 +191,7 @@ public class Inv extends JFrame {
             // Cargar el driver de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
             // Crear un objeto Statement para ejecutar consultas SQL
             Statement sentencia = conexion.createStatement();
             // Ejecutar una consulta SQL para obtener los datos del inventario
@@ -255,7 +277,7 @@ public class Inv extends JFrame {
                         // Cargar el driver de MySQL
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         // Establecer la conexión con la base de datos
-                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "cello");
+                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
                         // Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                         PreparedStatement sentencia = conexion.prepareStatement("INSERT INTO inventario (fabricante,modelo,estado,ubicacion,direccionIP) VALUES (?,?,?,?,?)");
                         // Asignar los valores a los parámetros de la consulta
@@ -337,7 +359,7 @@ public class Inv extends JFrame {
                     //Cargar el driver de MySQL
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     //Establecer la conexión con la base de datos
-                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "cello");
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
                     //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                     PreparedStatement sentencia = conexion.prepareStatement("UPDATE inventario SET fabricante = ?, modelo = ?, estado = ?, ubicacion = ?, direccionIP = ? WHERE fabricante = ?");
                     //Asignar los valores a los parámetros de la consulta
@@ -388,13 +410,15 @@ public class Inv extends JFrame {
             if (fila != -1) {
                 //Obtener el dato que identifica al registro, por ejemplo, el fabricante
                 String fabricante = modeloTabla.getValueAt(fila, 0).toString();
-                //Crear la conexión con la base de datos
+            int opcion=JOptionPane.showConfirmDialog (null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;  
+            if(opcion==JOptionPane.YES_OPTION){
+                 //Crear la conexión con la base de datos
                 Connection conexion = null;
                 try {
                     //Cargar el driver de MySQL
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     //Establecer la conexión con la base de datos
-                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "cello");
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
                     //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                     PreparedStatement sentencia = conexion.prepareStatement("DELETE FROM inventario WHERE fabricante = ?");
                     //Asignar el valor al parámetro de la consulta
@@ -414,13 +438,70 @@ public class Inv extends JFrame {
                     //Mostrar un mensaje de error si ocurre alguna excepción
                     JOptionPane.showMessageDialog(Inv.this, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                //Mostrar un mensaje de advertencia si no se seleccionó una fila
-                JOptionPane.showMessageDialog(Inv.this, "Debe seleccionar una fila de la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }else{
+                 JOptionPane.showMessageDialog(Inv.this, "Operacion cancelada", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
+                
+                
+                
+            }
+//            else {
+//                //Mostrar un mensaje de advertencia si no se seleccionó una fila
+//                
+//            }
         }
     });
-
+    
+    botonBuscar.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        //Obtener el texto del campoBuscar, que será el valor que quieras buscar
+        String direccionIP = campoBuscar.getText();
+        //Crear la conexión con la base de datos
+        Connection conexion = null;
+        try {
+            //Cargar el driver de MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            //Establecer la conexión con la base de datos
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+            //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
+            PreparedStatement sentencia = conexion.prepareStatement("SELECT * FROM inventario WHERE direccionIP = ?");
+            //Asignar el valor al parámetro de la consulta
+            sentencia.setString(1, direccionIP);
+            //Ejecutar la consulta SQL, que devuelve un objeto ResultSet con los resultados de la consulta
+            ResultSet resultado = sentencia.executeQuery();
+            //Crear una variable para contar el número de registros encontrados
+            int contador = 0;
+            //Recorrer el ResultSet, usando el método next
+            while (resultado.next()) {
+                //Obtener los datos de cada registro, usando los métodos get de la clase ResultSet
+                String fabricante = resultado.getString("fabricante");
+                String modelo = resultado.getString("modelo");
+                String estado = resultado.getString("estado");
+                String ubicacion = resultado.getString("ubicacion");
+                //Mostrar los datos de cada registro en la interfaz, usando el método JOptionPane.showMessageDialog
+                JOptionPane.showMessageDialog(Inv.this, "Se encontró el siguiente registro con la dirección IP " + direccionIP + ":\n" +
+                "Fabricante: " + fabricante + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Estado: " + estado + "\n" +
+                "Ubicación: " + ubicacion, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                //Incrementar el contador de registros encontrados
+                contador++;
+            }
+            //Mostrar un mensaje de que no se encontró ningún registro si el contador es cero
+            if (contador == 0) {
+                JOptionPane.showMessageDialog(Inv.this, "No se encontró ningún registro con la dirección IP " + direccionIP, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            //Cerrar el ResultSet, la sentencia y la conexión
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (Exception e) {
+            //Mostrar un mensaje de error si ocurre alguna excepción
+            JOptionPane.showMessageDialog(Inv.this, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+});
     botonRegresar.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
