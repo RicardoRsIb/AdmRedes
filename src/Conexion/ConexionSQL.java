@@ -34,7 +34,7 @@ public class ConexionSQL {
     public String username = "root";
 
     // Clave de usuario
-    public String password = "cello";
+    public String password = "1234";
     Connection conn = null;
 
     public Connection getConnection() {
