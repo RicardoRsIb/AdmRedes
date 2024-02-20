@@ -61,12 +61,15 @@ public class Login extends javax.swing.JFrame {
         Usuario.setForeground(new java.awt.Color(204, 204, 204));
         Usuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 255)));
         Usuario.setCaretColor(new java.awt.Color(102, 102, 102));
+        Usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Usuario.setName("Usuario"); // NOI18N
         Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsuarioActionPerformed(evt);
             }
         });
         jPanel2.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 240, -1));
+        Usuario.getAccessibleContext().setAccessibleName("");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));

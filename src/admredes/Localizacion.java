@@ -5,10 +5,7 @@
 package admredes;
 
 import java.awt.Color;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 /**
  *
  * @author Ricardo R. Ibarra
@@ -26,7 +23,8 @@ public class Localizacion extends javax.swing.JFrame {
     public Localizacion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(Croquis1, "src/imagenes/plano4.png");
+        JPanelImage mImage = new JPanelImage(Croquis1, "src/imagenes/empresa.png");
+        //Croquis1.add(scroll);
         Croquis1.add(mImage).repaint();
         Croquis1.setOpaque(false);
         Croquis1.setBorder(null);
@@ -52,21 +50,26 @@ public class Localizacion extends javax.swing.JFrame {
         Of2 = new javax.swing.JButton();
         Of3 = new javax.swing.JButton();
         Entrada = new javax.swing.JButton();
+        bSite = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Localización de dispositivos");
 
+        Croquis1.setPreferredSize(new java.awt.Dimension(800, 850));
+
         javax.swing.GroupLayout Croquis1Layout = new javax.swing.GroupLayout(Croquis1);
         Croquis1.setLayout(Croquis1Layout);
         Croquis1Layout.setHorizontalGroup(
             Croquis1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 983, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         Croquis1Layout.setVerticalGroup(
             Croquis1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGap(0, 739, Short.MAX_VALUE)
         );
 
         SC1.setText("Sala C. 1");
@@ -110,19 +113,53 @@ public class Localizacion extends javax.swing.JFrame {
 
         Entrada.setText("Entrada");
 
+        bSite.setText("Site");
+        bSite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSiteActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Sala Espera");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Pasillos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(355, 355, 355)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Croquis1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(bSite)
+                        .addGap(18, 18, 18)
                         .addComponent(SC1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SC2)
                         .addGap(18, 18, 18)
                         .addComponent(SR)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(SC2)
                         .addGap(18, 18, 18)
                         .addComponent(Of1)
                         .addGap(18, 18, 18)
@@ -130,18 +167,10 @@ public class Localizacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Of3)
                         .addGap(18, 18, 18)
-                        .addComponent(Entrada)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Croquis1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(355, 355, 355)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(Entrada)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,12 +185,18 @@ public class Localizacion extends javax.swing.JFrame {
                     .addComponent(Of1)
                     .addComponent(Of2)
                     .addComponent(Of3)
-                    .addComponent(Entrada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(Entrada)
+                    .addComponent(bSite)
+                    .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jButton3)))
+                .addGap(9, 9, 9)
+                .addComponent(jButton1))
         );
 
         pack();
@@ -193,6 +228,20 @@ public class Localizacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         salaRe.setVisible(true);
     }//GEN-LAST:event_SRActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void bSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bSiteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +287,10 @@ public class Localizacion extends javax.swing.JFrame {
     private javax.swing.JButton SC1;
     private javax.swing.JButton SC2;
     private javax.swing.JButton SR;
+    private javax.swing.JButton bSite;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,7 @@ public class Oficina1 extends javax.swing.JFrame {
     public Oficina1() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(PanelOf1, "src/imagenes/oficina1.png");
+        JPanelImage mImage = new JPanelImage(PanelOf1, "src/imagenes/oficinas.png");
         PanelOf1.add(mImage).repaint();
         PanelOf1.setOpaque(false);
         PanelOf1.setBorder(null);
@@ -36,7 +36,9 @@ public class Oficina1 extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelOf1 = new javax.swing.JPanel();
-        pc9 = new javax.swing.JButton();
+        bOf1 = new javax.swing.JButton();
+        bOf2 = new javax.swing.JButton();
+        bOf3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,17 +46,31 @@ public class Oficina1 extends javax.swing.JFrame {
         PanelOf1.setLayout(PanelOf1Layout);
         PanelOf1Layout.setHorizontalGroup(
             PanelOf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 582, Short.MAX_VALUE)
         );
         PanelOf1Layout.setVerticalGroup(
             PanelOf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 327, Short.MAX_VALUE)
         );
 
-        pc9.setText("PC-9");
-        pc9.addActionListener(new java.awt.event.ActionListener() {
+        bOf1.setText("Oficina 1");
+        bOf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pc9ActionPerformed(evt);
+                bOf1ActionPerformed(evt);
+            }
+        });
+
+        bOf2.setText("Oficina 2");
+        bOf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOf2ActionPerformed(evt);
+            }
+        });
+
+        bOf3.setText("Oficina 3");
+        bOf3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOf3ActionPerformed(evt);
             }
         });
 
@@ -65,15 +81,23 @@ public class Oficina1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pc9)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bOf1)
+                        .addGap(18, 18, 18)
+                        .addComponent(bOf2)
+                        .addGap(18, 18, 18)
+                        .addComponent(bOf3))
                     .addComponent(PanelOf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(pc9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bOf1)
+                    .addComponent(bOf2)
+                    .addComponent(bOf3))
                 .addGap(18, 18, 18)
                 .addComponent(PanelOf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -82,13 +106,33 @@ public class Oficina1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pc9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pc9ActionPerformed
+    private void bOf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOf1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC9"
-                + "\nModelo del dispositivo: PC-PT"
-                + "\nFastEthernet0"
-                + "\nIP: 192.168.10.10/24");
-    }//GEN-LAST:event_pc9ActionPerformed
+        JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.109/24");
+    }//GEN-LAST:event_bOf1ActionPerformed
+
+    private void bOf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOf2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.110/24");
+                                   
+    }//GEN-LAST:event_bOf2ActionPerformed
+
+    private void bOf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOf3ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.111/24");                                   
+    }//GEN-LAST:event_bOf3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +171,9 @@ public class Oficina1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelOf1;
-    private javax.swing.JButton pc9;
+    private javax.swing.JButton bOf1;
+    private javax.swing.JButton bOf2;
+    private javax.swing.JButton bOf3;
     // End of variables declaration//GEN-END:variables
+
 }

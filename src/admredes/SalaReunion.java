@@ -19,7 +19,7 @@ public class SalaReunion extends javax.swing.JFrame {
     public SalaReunion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(SR, "src/imagenes/SalaReunion.png");
+        JPanelImage mImage = new JPanelImage(SR, "src/imagenes/salaReunion.png");
         SR.add(mImage).repaint();
         SR.setOpaque(false);
         SR.setBorder(null);
@@ -60,6 +60,11 @@ public class SalaReunion extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cam-1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,11 +98,21 @@ public class SalaReunion extends javax.swing.JFrame {
 
     private void bPrinter0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrinter0ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: Printer0"
-                + "\nModelo del dispositivo: Printer-PT"
-                + "\nFastEthernet UP"
-                + "\nIP: 192.168.10.253/24");
+        JOptionPane.showMessageDialog(null, "Fabricante: Epson"
+                + "\nModelo: EcoTank L6270"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala de reunión"
+                + "\nDirección IP: 192.168.10.5/24");
     }//GEN-LAST:event_bPrinter0ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Fabricante: Steren"
+                + "\nModelo: CCTV-212"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala de reunión"
+                + "\nDirección IP: 192.168.10.20/24");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

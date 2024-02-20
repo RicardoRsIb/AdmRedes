@@ -54,28 +54,28 @@ public class saladecomputo1 extends javax.swing.JFrame {
             .addGap(0, 410, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Computadora 0");
+        jButton1.setText("PC0");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Computadora 1");
+        jButton2.setText("PC1");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Computadora 2");
+        jButton3.setText("PC2");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Computadora 3");
+        jButton4.setText("PC3");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -95,7 +95,7 @@ public class saladecomputo1 extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(salaCom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,34 +121,38 @@ public class saladecomputo1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC0"
-                + "\nModelo del dispositivo: PC-PT"
-                + "\nFastEthernet0"
-                + "\nIP: 192.168.10.1/24");
+        JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.100/24");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC1"
-                + "\nModelo del dispositivo: PC-PT"
-                + "\nFastEthernet0"
-                + "\nIP: 192.168.10.2/24");
+                JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.101/24");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC2"
-                + "\nModelo del dispositivo: PC-PT"
-                + "\nFastEthernet0"
-                + "\nIP: 192.168.10.3/24");
+                JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.102/24");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Nombre del dispositivo: PC3"
-                + "\nModelo del dispositivo: PC-PT"
-                + "\nFastEthernet0"
-                + "\nIP: 192.168.10.4/24");
+               JOptionPane.showMessageDialog(null, "Fabricante: Dell"
+                + "\nModelo: Optiplex 7010"
+                + "\nEstado: Buen estado"
+                + "\nUbicación: Sala cómputo 1"
+                + "\nDirección IP: 192.168.10.103/24");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
