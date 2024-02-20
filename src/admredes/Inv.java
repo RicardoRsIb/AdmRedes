@@ -169,7 +169,7 @@ public class Inv extends JFrame {
             // Cargar el driver de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "cello");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
             // Crear un objeto Statement para ejecutar consultas SQL
             Statement sentencia = conexion.createStatement();
             // Ejecutar una consulta SQL para obtener los datos del inventario

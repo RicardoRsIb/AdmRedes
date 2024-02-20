@@ -4,11 +4,23 @@
  */
 package admredes;
 
+import Conexion.ConexionSQL;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pakit
  */
 public class FallasSol extends javax.swing.JFrame {
+    private DefaultTableModel modeloTablaSol;
+    
+    ConexionSQL con = new ConexionSQL();
+    Connection conection = con.getConnection();
 
     /**
      * Creates new form FallasSol
@@ -16,6 +28,29 @@ public class FallasSol extends javax.swing.JFrame {
     public FallasSol() {
         initComponents();
         this.setLocationRelativeTo(null);
+        mostrarDatosFallasSol();
+    }
+    
+    public void mostrarDatosFallasSol(){
+        DefaultTableModel tfallassol = new DefaultTableModel();
+        tfallassol.addColumn("Nombre de la Falla");
+        tfallassol.addColumn("Descripción");
+        tablaFallasSol.setModel(tfallassol);
+        
+        String []datos = new String[2];
+        
+        try {
+            Statement leer = conection.createStatement();
+            ResultSet resultado = leer.executeQuery("SELECT * FROM fallassol");
+            
+            while(resultado.next()){
+                datos[0] = resultado.getString(2);
+                datos[1] = resultado.getString(3);
+                tfallassol.addRow(datos);
+            }
+            tablaFallasSol.setModel(tfallassol);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -28,18 +63,14 @@ public class FallasSol extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        panelTablaSol = new javax.swing.JScrollPane();
+        tablaFallasSol = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Fallas Solucionadas");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -48,17 +79,31 @@ public class FallasSol extends javax.swing.JFrame {
             }
         });
 
+        tablaFallasSol.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        panelTablaSol.setViewportView(tablaFallasSol);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(377, 377, 377))
+                    .addComponent(panelTablaSol, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -66,9 +111,9 @@ public class FallasSol extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTablaSol, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -121,7 +166,7 @@ public class FallasSol extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane panelTablaSol;
+    private javax.swing.JTable tablaFallasSol;
     // End of variables declaration//GEN-END:variables
 }
