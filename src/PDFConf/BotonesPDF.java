@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class BotonesPDF {
 
@@ -120,6 +121,8 @@ public class BotonesPDF {
 
     /*Metodo Eliminar*/
     public void Eliminar_Pdf(PdfObtenerSQL vo) {
+        int opcion=JOptionPane.showConfirmDialog (null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;  
+            if(opcion==JOptionPane.YES_OPTION){
         ConexionSQL conec = new ConexionSQL();
         String sql = "DELETE FROM archivosconf WHERE id = ?;";
         PreparedStatement ps = null;
@@ -139,6 +142,8 @@ public class BotonesPDF {
             }
         }
     }
+    }
+            
 
     //Permite mostrar PDF contenido en la base de datos
     public void ejecutar_archivoPDF(int id) {
