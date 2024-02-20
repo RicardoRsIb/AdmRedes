@@ -41,7 +41,7 @@ public class salaComputo2 extends javax.swing.JFrame {
         bComp5 = new javax.swing.JButton();
         bComp7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout pSalaComputo2Layout = new javax.swing.GroupLayout(pSalaComputo2);
         pSalaComputo2.setLayout(pSalaComputo2Layout);

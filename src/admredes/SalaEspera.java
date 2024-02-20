@@ -39,7 +39,7 @@ public class SalaEspera extends javax.swing.JFrame {
         pSalaespera = new javax.swing.JPanel();
         bLaptop = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout pSalaesperaLayout = new javax.swing.GroupLayout(pSalaespera);
         pSalaespera.setLayout(pSalaesperaLayout);

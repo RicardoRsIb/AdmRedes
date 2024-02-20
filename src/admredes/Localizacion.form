@@ -35,8 +35,8 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Croquis1" pref="853" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Croquis1" min="-2" pref="859" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="bSite" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -50,16 +50,12 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="Of1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Of2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Of3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="Entrada" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,22 +70,13 @@
                   <Component id="SC2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SR" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Of1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Of2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Of3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Entrada" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bSite" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Croquis1" min="-2" pref="739" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Croquis1" min="-2" pref="739" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -115,7 +102,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="859" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -159,21 +146,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="Of1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Oficina 1"/>
+        <Property name="text" type="java.lang.String" value="Oficina"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Of1ActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="Of2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Oficina 2"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Of3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Oficina 3"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Entrada">
       <Properties>

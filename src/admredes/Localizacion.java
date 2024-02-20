@@ -18,6 +18,9 @@ public class Localizacion extends javax.swing.JFrame {
     saladecomputo1 loca = new saladecomputo1();
     Oficina1 of1 = new Oficina1();
     SalaReunion salaRe = new SalaReunion();
+    Site sitee = new Site();
+    SalaEspera salaespe = new SalaEspera();
+    salaComputo2 sala2 = new salaComputo2();
     
 
     public Localizacion() {
@@ -47,8 +50,6 @@ public class Localizacion extends javax.swing.JFrame {
         SC2 = new javax.swing.JButton();
         SR = new javax.swing.JButton();
         Of1 = new javax.swing.JButton();
-        Of2 = new javax.swing.JButton();
-        Of3 = new javax.swing.JButton();
         Entrada = new javax.swing.JButton();
         bSite = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -65,7 +66,7 @@ public class Localizacion extends javax.swing.JFrame {
         Croquis1.setLayout(Croquis1Layout);
         Croquis1Layout.setHorizontalGroup(
             Croquis1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 859, Short.MAX_VALUE)
         );
         Croquis1Layout.setVerticalGroup(
             Croquis1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,16 +101,12 @@ public class Localizacion extends javax.swing.JFrame {
             }
         });
 
-        Of1.setText("Oficina 1");
+        Of1.setText("Oficina");
         Of1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Of1ActionPerformed(evt);
             }
         });
-
-        Of2.setText("Oficina 2");
-
-        Of3.setText("Oficina 3");
 
         Entrada.setText("Entrada");
 
@@ -148,8 +145,8 @@ public class Localizacion extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Croquis1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bSite)
                         .addGap(18, 18, 18)
@@ -163,14 +160,10 @@ public class Localizacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Of1)
                         .addGap(18, 18, 18)
-                        .addComponent(Of2)
+                        .addComponent(Entrada)
                         .addGap(18, 18, 18)
-                        .addComponent(Of3)
-                        .addGap(18, 18, 18)
-                        .addComponent(Entrada)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton3)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,18 +176,12 @@ public class Localizacion extends javax.swing.JFrame {
                     .addComponent(SC2)
                     .addComponent(SR)
                     .addComponent(Of1)
-                    .addComponent(Of2)
-                    .addComponent(Of3)
                     .addComponent(Entrada)
                     .addComponent(bSite)
-                    .addComponent(jButton2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton3)))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Croquis1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jButton1))
         );
@@ -221,7 +208,7 @@ public class Localizacion extends javax.swing.JFrame {
 
     private void SC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SC2ActionPerformed
         // TODO add your handling code here:
-        
+        sala2.setVisible(true);
     }//GEN-LAST:event_SC2ActionPerformed
 
     private void SRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SRActionPerformed
@@ -235,12 +222,12 @@ public class Localizacion extends javax.swing.JFrame {
 
     private void bSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiteActionPerformed
         // TODO add your handling code here:
-        
+        sitee.setVisible(true);
     }//GEN-LAST:event_bSiteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        salaespe.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -282,8 +269,6 @@ public class Localizacion extends javax.swing.JFrame {
     private javax.swing.JPanel Croquis1;
     private javax.swing.JButton Entrada;
     private javax.swing.JButton Of1;
-    private javax.swing.JButton Of2;
-    private javax.swing.JButton Of3;
     private javax.swing.JButton SC1;
     private javax.swing.JButton SC2;
     private javax.swing.JButton SR;

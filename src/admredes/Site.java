@@ -39,7 +39,7 @@ public class Site extends javax.swing.JFrame {
         bSwitch = new javax.swing.JButton();
         bServer = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout pSiteLayout = new javax.swing.GroupLayout(pSite);
         pSite.setLayout(pSiteLayout);
