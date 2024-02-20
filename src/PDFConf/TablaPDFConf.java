@@ -1,4 +1,4 @@
-package PDF;
+package PDFConf;
 
 import java.awt.Component;
 import javax.swing.JButton;

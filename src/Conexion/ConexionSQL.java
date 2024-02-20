@@ -13,10 +13,11 @@ import java.sql.SQLException;
  * @author nancy
  */
 public class ConexionSQL {
-    
+//     // Librería de MySQL
+   public String driver = "com.mysql.jdbc.Driver";
 
     // Librería de MySQL
-    public String driver = "com.mysql.cj.jdbc.Driver";
+   // public String driver = "com.mysql.cj.jdbc.Driver";
 
     // Nombre de la base de datos
     public String database = "adminredes";
@@ -34,7 +35,7 @@ public class ConexionSQL {
     public String username = "root";
 
     // Clave de usuario
-    public String password = "cello";
+    public String password = "pass";
     Connection conn = null;
 
     public Connection getConnection() {

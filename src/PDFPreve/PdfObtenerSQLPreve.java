@@ -1,11 +1,13 @@
-package PDF;
+package PDFPreve;
 
-public class PdfObtenerSQL {
+
+
+public class PdfObtenerSQLPreve {
     int Numero;
     String Nombre;
     byte[] Archivo;
 
-    public PdfObtenerSQL() {
+    public PdfObtenerSQLPreve() {
     }
     
     public int getNumeropdf() {

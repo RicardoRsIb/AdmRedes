@@ -1,7 +1,7 @@
-package PDF;
+package PDFConf;
 
 import Conexion.ConexionSQL;
-import PDF.PdfObtenerSQL;
+import PDFConf.PdfObtenerSQL;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -98,7 +98,7 @@ public class BotonesPDF {
 
     public void Modificar_Pdf2(PdfObtenerSQL vo) {
         ConexionSQL conec = new ConexionSQL();
-        String sql = "UPDATE archivosconf SET nombre = ? WHERE id = ?;";
+        String sql = "UPDATE archivosconf SET nombrepdf = ? WHERE id = ?;";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);

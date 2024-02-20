@@ -1,7 +1,7 @@
-package PDF;
+package PDFConf;
 
-import PDF.PdfObtenerSQL;
-import PDF.BotonesPDF;
+import PDFConf.PdfObtenerSQL;
+import PDFConf.BotonesPDF;
 import java.awt.Image;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

@@ -8,9 +8,9 @@ package admredes;
 
 import Conexion.ConexionSQL;
 import Conexion.bdSQL;
-import PDFConf.BotonesPDF;
-import PDFConf.Tabla_Conf;
-import PDFConf.PdfObtenerSQL;
+import PDFPreve.BotonesPDFPreve;
+import PDFPreve.Tabla_Preve;
+import PDFPreve.PdfObtenerSQLPreve;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,17 +23,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author David
+ * @author Nancy
  */
 
-public class Configuraciones extends javax.swing.JFrame {
+public class PrevencionFallas extends javax.swing.JFrame {
     
-    Tabla_Conf tpdf = new Tabla_Conf();
+    Tabla_Preve tpdf = new Tabla_Preve();
     String ruta_archivo = "";
     int id = -1;
     ConexionSQL conn = new ConexionSQL();
 
-    public Configuraciones() {
+    public PrevencionFallas() {
         initComponents();
          this.setLocationRelativeTo(null);
         
@@ -43,8 +43,8 @@ public class Configuraciones extends javax.swing.JFrame {
     }
 
     public void guardar_pdf(int numero, String nombre, File ruta) {
-        BotonesPDF pa = new BotonesPDF();
-        PdfObtenerSQL po = new PdfObtenerSQL();
+        BotonesPDFPreve pa = new BotonesPDFPreve();
+        PdfObtenerSQLPreve po = new PdfObtenerSQLPreve();
         po.setNumeropdf(numero);
         po.setNombrepdf(nombre);
         try {
@@ -59,8 +59,8 @@ public class Configuraciones extends javax.swing.JFrame {
     }
 
     public void modificar_pdf(int numero, String nombre, File ruta) {
-        BotonesPDF pa = new BotonesPDF();
-        PdfObtenerSQL po = new PdfObtenerSQL();
+        BotonesPDFPreve pa = new BotonesPDFPreve();
+        PdfObtenerSQLPreve po = new PdfObtenerSQLPreve();
         po.setNumeropdf(numero);
         po.setNombrepdf(nombre);
         try {
@@ -75,16 +75,16 @@ public class Configuraciones extends javax.swing.JFrame {
     }
 
     public void modificar_pdf(int numero, String nombre) {
-        BotonesPDF pa = new BotonesPDF();
-        PdfObtenerSQL po = new PdfObtenerSQL();
+        BotonesPDFPreve pa = new BotonesPDFPreve();
+        PdfObtenerSQLPreve po = new PdfObtenerSQLPreve();
         po.setNumeropdf(numero);
         po.setNombrepdf(nombre);
         pa.Modificar_Pdf2(po);
     }
 
     public void eliminar_pdf(int numero) {
-        BotonesPDF pa = new BotonesPDF();
-        PdfObtenerSQL po = new PdfObtenerSQL();
+        BotonesPDFPreve pa = new BotonesPDFPreve();
+        PdfObtenerSQLPreve po = new PdfObtenerSQLPreve();
         po.setNumeropdf(numero);
         pa.Eliminar_Pdf(po);
     }
@@ -234,9 +234,9 @@ public class Configuraciones extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE))
         );
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 204));
+        jTextField1.setBackground(new java.awt.Color(255, 204, 204));
         jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jTextField1.setText("                                         CONFIGURACIONES");
+        jTextField1.setText("                        PLANES DE PREVENCIÓN Y CORRECCIÓN ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -310,7 +310,7 @@ public class Configuraciones extends javax.swing.JFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         String nombre = txtname.getText();
         bdSQL s = new bdSQL();
-        int codigo = s.auto_increment("SELECT MAX(id) FROM archivosconf;");
+        int codigo = s.auto_increment("SELECT MAX(id) FROM archivospreve;");
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(codigo, nombre, ruta);
@@ -354,7 +354,7 @@ public class Configuraciones extends javax.swing.JFrame {
                 if (boton.getText().equals("Vacio")) {
                     JOptionPane.showMessageDialog(null, "No hay archivo");
                 } else {
-                    BotonesPDF pd = new BotonesPDF();
+                    BotonesPDFPreve pd = new BotonesPDFPreve();
                     pd.ejecutar_archivoPDF(id);
                     try {
                         Desktop.getDesktop().open(new File("new.pdf"));
@@ -417,21 +417,23 @@ public class Configuraciones extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Configuraciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrevencionFallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Configuraciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrevencionFallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Configuraciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrevencionFallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Configuraciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrevencionFallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Configuraciones().setVisible(true);
+                new PrevencionFallas().setVisible(true);
             }
         });
     }
