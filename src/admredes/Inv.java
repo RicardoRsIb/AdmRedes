@@ -189,9 +189,9 @@ public class Inv extends JFrame {
         Connection conexion = null;
         try {
             // Cargar el driver de MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             // Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
             // Crear un objeto Statement para ejecutar consultas SQL
             Statement sentencia = conexion.createStatement();
             // Ejecutar una consulta SQL para obtener los datos del inventario
@@ -275,9 +275,9 @@ public class Inv extends JFrame {
                     Connection conexion = null;
                     try {
                         // Cargar el driver de MySQL
-                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Class.forName("com.mysql.jdbc.Driver");
                         // Establecer la conexión con la base de datos
-                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+                        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
                         // Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                         PreparedStatement sentencia = conexion.prepareStatement("INSERT INTO inventario (fabricante,modelo,estado,ubicacion,direccionIP) VALUES (?,?,?,?,?)");
                         // Asignar los valores a los parámetros de la consulta
@@ -357,9 +357,9 @@ public class Inv extends JFrame {
                 Connection conexion = null;
                 try {
                     //Cargar el driver de MySQL
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Class.forName("com.mysql.jdbc.Driver");
                     //Establecer la conexión con la base de datos
-                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
                     //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                     PreparedStatement sentencia = conexion.prepareStatement("UPDATE inventario SET fabricante = ?, modelo = ?, estado = ?, ubicacion = ?, direccionIP = ? WHERE fabricante = ?");
                     //Asignar los valores a los parámetros de la consulta
@@ -416,9 +416,9 @@ public class Inv extends JFrame {
                 Connection conexion = null;
                 try {
                     //Cargar el driver de MySQL
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Class.forName("com.mysql.jdbc.Driver");
                     //Establecer la conexión con la base de datos
-                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+                    conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
                     //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
                     PreparedStatement sentencia = conexion.prepareStatement("DELETE FROM inventario WHERE fabricante = ?");
                     //Asignar el valor al parámetro de la consulta
@@ -461,9 +461,9 @@ public class Inv extends JFrame {
         Connection conexion = null;
         try {
             //Cargar el driver de MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             //Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "comeasyouH3Y");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/adminredes", "root", "1234");
             //Crear un objeto PreparedStatement para ejecutar consultas SQL parametrizadas
             PreparedStatement sentencia = conexion.prepareStatement("SELECT * FROM inventario WHERE direccionIP = ?");
             //Asignar el valor al parámetro de la consulta
