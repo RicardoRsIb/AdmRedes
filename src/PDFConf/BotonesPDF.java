@@ -33,6 +33,8 @@ public class BotonesPDF {
                 list.add(obtener);
             }
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            
             System.out.println(ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -59,8 +61,10 @@ public class BotonesPDF {
             ps.setString(2, vo.getNombrepdf());
             ps.setBytes(3, vo.getArchivopdf());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se agregó el archivo PDF correctamente");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al agregar el archivo PDF: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -84,8 +88,10 @@ public class BotonesPDF {
             ps.setBytes(2, vo.getArchivopdf());
             ps.setInt(3, vo.getNumeropdf());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se modificó correctamente el archivo PDF");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar el nombre del archivo PDF" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -106,8 +112,10 @@ public class BotonesPDF {
             ps.setString(1, vo.getNombrepdf());
             ps.setInt(2, vo.getNumeropdf());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se modificó correctamente el nombre del archivo PDF");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar el nombre del archivo PDF: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -121,7 +129,7 @@ public class BotonesPDF {
 
     /*Metodo Eliminar*/
     public void Eliminar_Pdf(PdfObtenerSQL vo) {
-        int opcion=JOptionPane.showConfirmDialog (null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;  
+        int opcion=JOptionPane.showConfirmDialog (null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION); 
             if(opcion==JOptionPane.YES_OPTION){
         ConexionSQL conec = new ConexionSQL();
         String sql = "DELETE FROM archivosconf WHERE id = ?;";
@@ -130,8 +138,10 @@ public class BotonesPDF {
             ps = conec.getConnection().prepareStatement(sql);
             ps.setInt(1, vo.getNumeropdf());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se eliminó el archivo PDF correctamente");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar el archivo PDF " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -177,7 +187,7 @@ public class BotonesPDF {
             cn.desconectar();
 
         } catch (IOException | NumberFormatException | SQLException ex) {
-            System.out.println("Error al abrir archivo PDF " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al abrir archivo PDF " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
