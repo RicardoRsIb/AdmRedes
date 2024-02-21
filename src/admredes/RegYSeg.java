@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
  * @author pakit
  */
 public class RegYSeg extends javax.swing.JFrame {
+
     private DefaultTableModel modeloTablaSol;
-    
+
     ConexionSQL con = new ConexionSQL();
     Connection conection = con.getConnection();
 
@@ -33,26 +34,26 @@ public class RegYSeg extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostrarDatosFallasSol();
     }
-    
-    public void mostrarDatosFallasSol(){
+
+    public void mostrarDatosFallasSol() {
         DefaultTableModel tfallas = new DefaultTableModel();
         tfallas.addColumn("Nombre de la Falla");
         tfallas.addColumn("Descripción");
         tablaFallas.setModel(tfallas);
-        
-        String []datos = new String[2];
-        
+
+        String[] datos = new String[2];
+
         try {
             Statement leer = conection.createStatement();
             ResultSet resultado = leer.executeQuery("SELECT * FROM fallas");
-            
-            while(resultado.next()){
+
+            while (resultado.next()) {
                 datos[0] = resultado.getString(2);
                 datos[1] = resultado.getString(3);
                 tfallas.addRow(datos);
             }
             tablaFallas.setModel(tfallas);
-            modeloTablaSol=tfallas;
+            modeloTablaSol = tfallas;
         } catch (Exception e) {
         }
     }
@@ -74,7 +75,6 @@ public class RegYSeg extends javax.swing.JFrame {
         panelTabla = new javax.swing.JScrollPane();
         tablaFallas = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +82,11 @@ public class RegYSeg extends javax.swing.JFrame {
         jLabel1.setText("Registro y Seguimiento de Fallas");
 
         btnSolucionar.setText("Solucionada");
+        btnSolucionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolucionarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -124,13 +129,6 @@ public class RegYSeg extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,8 +141,6 @@ public class RegYSeg extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSolucionar)
@@ -170,8 +166,7 @@ public class RegYSeg extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(btnSolucionar)
                     .addComponent(jButton4)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnModificar))
+                    .addComponent(btnEliminar))
                 .addContainerGap())
         );
 
@@ -201,10 +196,10 @@ public class RegYSeg extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int fila = tablaFallas.getSelectedRow();
-            if (fila != -1) {
-                String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
-            int opcion=JOptionPane.showConfirmDialog (null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;  
-            if(opcion==JOptionPane.YES_OPTION){
+        if (fila != -1) {
+            String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;
+            if (opcion == JOptionPane.YES_OPTION) {
                 try {
                     PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE nombreF = ?");
                     sentencia.setString(1, nombre);
@@ -214,21 +209,44 @@ public class RegYSeg extends javax.swing.JFrame {
                         modeloTablaSol.removeRow(fila);
                     }
                 } catch (Exception e) {
-                    //Mostrar un mensaje de error si ocurre alguna excepción
                     JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }else{
-                 JOptionPane.showMessageDialog(null, "Operacion cancelada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Operacion cancelada", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-                
-                
-                
-            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnSolucionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolucionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
+        int fila = tablaFallas.getSelectedRow();
+        if (fila != -1) {
+            String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
+            String descripcion = modeloTablaSol.getValueAt(fila, 1).toString();
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;
+            if (opcion == JOptionPane.YES_OPTION) {
+                try {
+                    
+                    PreparedStatement guardar = conection.prepareStatement("INSERT  fallassol (id,nombre,descripcion) VALUES (?,?,?)");
+                    guardar.setString(1, "0");
+                    guardar.setString(2, nombre);
+                    guardar.setString(3, descripcion);
+                    guardar.executeUpdate();
+                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE nombreF = ?");
+                    sentencia.setString(1, nombre);
+                    int filas = sentencia.executeUpdate();
+                    if (filas > 0) {
+                        JOptionPane.showMessageDialog(null, "Se ha solucionado la falla", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        modeloTablaSol.removeRow(fila);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Operacion cancelada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnSolucionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,7 +285,6 @@ public class RegYSeg extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSolucionar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
