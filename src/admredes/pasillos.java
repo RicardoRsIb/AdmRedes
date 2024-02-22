@@ -11,19 +11,19 @@ import javax.swing.JOptionPane;
  *
  * @author Ricardo R. Ibarra
  */
-public class SalaReunion extends javax.swing.JFrame {
+public class pasillos extends javax.swing.JFrame {
 
     /**
-     * Creates new form SalaReunion
+     * Creates new form pasillos
      */
-    public SalaReunion() {
+    public pasillos() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JPanelImage mImage = new JPanelImage(SR, "src/imagenes/salaReunion.png");
-        SR.add(mImage).repaint();
-        SR.setOpaque(false);
-        SR.setBorder(null);
-        SR.setBackground(new  Color(0,0,0,0));
+        JPanelImage mImage = new JPanelImage(pPasillo, "src/imagenes/pasillo.png");
+        pPasillo.add(mImage).repaint();
+        pPasillo.setOpaque(false);
+        pPasillo.setBorder(null);
+        pPasillo.setBackground(new  Color(0,0,0,0));
     }
 
     /**
@@ -35,31 +35,31 @@ public class SalaReunion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SR = new javax.swing.JPanel();
-        bPrinter0 = new javax.swing.JButton();
+        pPasillo = new javax.swing.JPanel();
+        bAccesPoint = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout SRLayout = new javax.swing.GroupLayout(SR);
-        SR.setLayout(SRLayout);
-        SRLayout.setHorizontalGroup(
-            SRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+        javax.swing.GroupLayout pPasilloLayout = new javax.swing.GroupLayout(pPasillo);
+        pPasillo.setLayout(pPasilloLayout);
+        pPasilloLayout.setHorizontalGroup(
+            pPasilloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
-        SRLayout.setVerticalGroup(
-            SRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pPasilloLayout.setVerticalGroup(
+            pPasilloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
 
-        bPrinter0.setText("Printer-0");
-        bPrinter0.addActionListener(new java.awt.event.ActionListener() {
+        bAccesPoint.setText("Acces Point");
+        bAccesPoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPrinter0ActionPerformed(evt);
+                bAccesPointActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cámara-T0");
+        jButton2.setText("Cámara T1");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -73,45 +73,45 @@ public class SalaReunion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bPrinter0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAccesPoint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(pPasillo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(SR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(bPrinter0)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(bAccesPoint)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(pPasillo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bPrinter0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrinter0ActionPerformed
+    private void bAccesPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccesPointActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Fabricante: Epson"
-                + "\nModelo: EcoTank L6270"
+        JOptionPane.showMessageDialog(null, "Fabricante: Ubiquiti Networks"
+                + "\nModelo: UniFi AC Lite"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala de reunión"
-                + "\nDirección IP: 192.168.10.5/24");
-    }//GEN-LAST:event_bPrinter0ActionPerformed
+                + "\nUbicación: Pasillos");
+    }//GEN-LAST:event_bAccesPointActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Fabricante: Steren"
                 + "\nModelo: CCTV-212"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala de reunión"
-                + "\nDirección IP: 192.168.10.20/24");
+                + "\nUbicación: Pasillos"
+                + "\nDirección IP: 192.168.10.21/24");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -131,27 +131,27 @@ public class SalaReunion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SalaReunion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pasillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SalaReunion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pasillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SalaReunion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pasillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SalaReunion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pasillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SalaReunion().setVisible(true);
+                new pasillos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel SR;
-    private javax.swing.JButton bPrinter0;
+    private javax.swing.JButton bAccesPoint;
     private javax.swing.JButton jButton2;
+    private javax.swing.JPanel pPasillo;
     // End of variables declaration//GEN-END:variables
 }
