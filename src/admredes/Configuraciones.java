@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author David
+ * @author Nancy
  */
 
 public class Configuraciones extends javax.swing.JFrame {

@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
- * @author David
+ * @author Nancy
  */
 public class TablaPDFPreve extends DefaultTableCellRenderer {
 

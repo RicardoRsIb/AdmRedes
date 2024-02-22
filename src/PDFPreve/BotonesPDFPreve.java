@@ -137,7 +137,7 @@ public class BotonesPDFPreve {
             ps = conec.getConnection().prepareStatement(sql);
             ps.setInt(1, vo.getNumeropdf());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se eliminó con correctamente el archivo PDF");
+            JOptionPane.showMessageDialog(null, "Se eliminó correctamente el archivo PDF");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Error eliminar el archivo PDF" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

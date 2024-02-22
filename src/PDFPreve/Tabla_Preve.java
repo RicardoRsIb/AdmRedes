@@ -26,8 +26,8 @@ public class Tabla_Preve {
         dt.addColumn("Archivo");
 
         ImageIcon icono = null;
-        if (get_Image("imagenes/32pdf.png") != null) {
-            icono = new ImageIcon(get_Image("imagenes/32pdf.png"));
+        if (get_Image("src/imagenes/32pdf.png") != null) {
+            icono = new ImageIcon(get_Image("src/imagenes/salaEspera.png"));
         }
 
         obt = new BotonesPDFPreve();
