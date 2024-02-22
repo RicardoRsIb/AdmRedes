@@ -178,6 +178,7 @@
     </Container>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="66" red="66" type="rgb"/>
         </Property>
@@ -185,6 +186,7 @@
           <Font name="Trebuchet MS" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="                 PLANES DE PREVENCI&#xd3;N Y CORRECCI&#xd3;N "/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>

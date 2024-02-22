@@ -234,9 +234,11 @@ public class Configuraciones extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE))
         );
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(153, 255, 204));
         jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jTextField1.setText("                                         CONFIGURACIONES");
+        jTextField1.setFocusable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

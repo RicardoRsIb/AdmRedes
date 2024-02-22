@@ -123,7 +123,7 @@ public class salaComputo2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Sala cómputo 2"
                 + "\nDirección IP: 192.168.10.105/24");
     }//GEN-LAST:event_bComp5ActionPerformed
 
@@ -132,7 +132,7 @@ public class salaComputo2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Sala cómputo 2"
                 + "\nDirección IP: 192.168.10.104/24");
     }//GEN-LAST:event_bComp4ActionPerformed
 
@@ -141,7 +141,7 @@ public class salaComputo2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Sala cómputo 2"
                 + "\nDirección IP: 192.168.10.106/24");
     }//GEN-LAST:event_bComp6ActionPerformed
 
@@ -150,7 +150,7 @@ public class salaComputo2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Sala cómputo 2"
                 + "\nDirección IP: 192.168.10.107/24");
     }//GEN-LAST:event_bComp7ActionPerformed
 

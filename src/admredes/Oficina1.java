@@ -111,7 +111,7 @@ public class Oficina1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Oficina 1"
                 + "\nDirección IP: 192.168.10.109/24");
     }//GEN-LAST:event_bOf1ActionPerformed
 
@@ -120,7 +120,7 @@ public class Oficina1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Oficina 2"
                 + "\nDirección IP: 192.168.10.110/24");
                                    
     }//GEN-LAST:event_bOf2ActionPerformed
@@ -130,7 +130,7 @@ public class Oficina1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Fabricante: Dell"
                 + "\nModelo: Optiplex 7010"
                 + "\nEstado: Buen estado"
-                + "\nUbicación: Sala cómputo 1"
+                + "\nUbicación: Oficina 3"
                 + "\nDirección IP: 192.168.10.111/24");                                   
     }//GEN-LAST:event_bOf3ActionPerformed
 

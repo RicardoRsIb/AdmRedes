@@ -184,9 +184,11 @@ public class PrevencionFallas extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(102, 102, 255));
         jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jTextField1.setText("                 PLANES DE PREVENCIÓN Y CORRECCIÓN ");
+        jTextField1.setFocusable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
