@@ -5,6 +5,7 @@
 package admredes;
 
 import Conexion.ConexionSQL;
+import Conexion.bdSQL;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -56,7 +57,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -131,6 +132,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        RegYSeg ryg = new RegYSeg();
+        ryg.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -142,12 +145,15 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = fieldNombre.getText();
         String des = fieldDescripcion.getText();
+        bdSQL s = new bdSQL();
+        int codigo = s.auto_increment("SELECT MAX(id) FROM fallas;");
+        String id = String.valueOf(codigo);
         try {
             if (nombre.isEmpty() || des.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
             } else {
                 PreparedStatement guardar = conection.prepareStatement("INSERT INTO fallas (id,nombreF,descripcionF) VALUES (?,?,?)");
-                guardar.setString(1, "0");
+                guardar.setString(1, id);
                 guardar.setString(2, nombre);
                 guardar.setString(3, des);
                 guardar.executeUpdate();

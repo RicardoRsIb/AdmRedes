@@ -8,6 +8,8 @@ import Conexion.ConexionSQL;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -33,22 +35,26 @@ public class FallasSol extends javax.swing.JFrame {
     
     public void mostrarDatosFallasSol(){
         DefaultTableModel tfallassol = new DefaultTableModel();
+        tfallassol.addColumn("Id");
         tfallassol.addColumn("Nombre de la Falla");
         tfallassol.addColumn("Descripción");
         tablaFallasSol.setModel(tfallassol);
         
-        String []datos = new String[2];
+        String []datos = new String[3];
         
         try {
             Statement leer = conection.createStatement();
             ResultSet resultado = leer.executeQuery("SELECT * FROM fallassol");
             
             while(resultado.next()){
-                datos[0] = resultado.getString(2);
-                datos[1] = resultado.getString(3);
+                datos[0] = resultado.getString( 1);
+                datos[1] = resultado.getString(2);
+                datos[2] = resultado.getString(3);
                 tfallassol.addRow(datos);
             }
             tablaFallasSol.setModel(tfallassol);
+            
+            modeloTablaSol = tfallassol;
         } catch (Exception e) {
         }
     }
@@ -66,6 +72,7 @@ public class FallasSol extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         panelTablaSol = new javax.swing.JScrollPane();
         tablaFallasSol = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +99,13 @@ public class FallasSol extends javax.swing.JFrame {
         ));
         panelTablaSol.setViewportView(tablaFallasSol);
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +113,10 @@ public class FallasSol extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(377, 377, 377))
@@ -114,7 +131,9 @@ public class FallasSol extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTablaSol, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnEliminar))
                 .addContainerGap())
         );
 
@@ -127,6 +146,29 @@ public class FallasSol extends javax.swing.JFrame {
         reyse.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        int fila = tablaFallasSol.getSelectedRow();
+        if (fila != -1) {
+            String id = modeloTablaSol.getValueAt(fila, 0).toString();
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;
+            if (opcion == JOptionPane.YES_OPTION) {
+                try {
+                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallassol WHERE id = '" + id + "'");
+                    int filas = sentencia.executeUpdate();
+                    if (filas > 0) {
+                        JOptionPane.showMessageDialog(null, "Se eliminó el registro seleccionado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        modeloTablaSol.removeRow(fila);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Operacion cancelada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +206,7 @@ public class FallasSol extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane panelTablaSol;

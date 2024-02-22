@@ -5,15 +5,18 @@
 package admredes;
 
 import Conexion.ConexionSQL;
+import Conexion.bdSQL;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -25,6 +28,7 @@ public class RegYSeg extends javax.swing.JFrame {
 
     ConexionSQL con = new ConexionSQL();
     Connection conection = con.getConnection();
+    Boolean modificar = false;
 
     /**
      * Creates new form RegYSeg
@@ -37,22 +41,28 @@ public class RegYSeg extends javax.swing.JFrame {
 
     public void mostrarDatosFallasSol() {
         DefaultTableModel tfallas = new DefaultTableModel();
+        tfallas.addColumn("Id");
         tfallas.addColumn("Nombre de la Falla");
         tfallas.addColumn("Descripción");
         tablaFallas.setModel(tfallas);
 
-        String[] datos = new String[2];
+        String[] datos = new String[3];
 
         try {
             Statement leer = conection.createStatement();
             ResultSet resultado = leer.executeQuery("SELECT * FROM fallas");
 
             while (resultado.next()) {
-                datos[0] = resultado.getString(2);
-                datos[1] = resultado.getString(3);
+                datos[0] = resultado.getString(1);
+                datos[1] = resultado.getString(2);
+                datos[2] = resultado.getString(3);
                 tfallas.addRow(datos);
             }
             tablaFallas.setModel(tfallas);
+            TableColumnModel columnModel = tablaFallas.getColumnModel();
+            columnModel.getColumn(1).setPreferredWidth(500);
+            columnModel.getColumn(2).setPreferredWidth(900);
+            tablaFallas.setColumnModel(columnModel);
             modeloTablaSol = tfallas;
         } catch (Exception e) {
         }
@@ -75,6 +85,7 @@ public class RegYSeg extends javax.swing.JFrame {
         panelTabla = new javax.swing.JScrollPane();
         tablaFallas = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,21 +122,31 @@ public class RegYSeg extends javax.swing.JFrame {
 
         tablaFallas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         panelTabla.setViewportView(tablaFallas);
+        if (tablaFallas.getColumnModel().getColumnCount() > 0) {
+            tablaFallas.getColumnModel().getColumn(0).setPreferredWidth(1000);
+        }
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -138,19 +159,21 @@ public class RegYSeg extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSolucionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2))
                     .addComponent(jButton3)
-                    .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,9 +187,10 @@ public class RegYSeg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(btnSolucionar)
                     .addComponent(jButton4)
-                    .addComponent(btnEliminar))
+                    .addComponent(btnSolucionar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnModificar))
                 .addContainerGap())
         );
 
@@ -191,18 +215,18 @@ public class RegYSeg extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registro regis = new Registro();
         regis.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int fila = tablaFallas.getSelectedRow();
         if (fila != -1) {
-            String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
+            String id = modeloTablaSol.getValueAt(fila, 0).toString();
             int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;
             if (opcion == JOptionPane.YES_OPTION) {
                 try {
-                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE nombreF = ?");
-                    sentencia.setString(1, nombre);
+                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE id = '" + id + "'");
                     int filas = sentencia.executeUpdate();
                     if (filas > 0) {
                         JOptionPane.showMessageDialog(null, "Se eliminó el registro seleccionado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -220,24 +244,29 @@ public class RegYSeg extends javax.swing.JFrame {
     private void btnSolucionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolucionarActionPerformed
         // TODO add your handling code here:
         int fila = tablaFallas.getSelectedRow();
+        bdSQL s = new bdSQL();
+        int codigo = s.auto_increment("SELECT MAX(id) FROM fallassol;");
+        String id = String.valueOf(codigo);
         if (fila != -1) {
-            String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
-            String descripcion = modeloTablaSol.getValueAt(fila, 1).toString();
+            String nombre = modeloTablaSol.getValueAt(fila, 1).toString();
+            String descripcion = modeloTablaSol.getValueAt(fila, 2).toString();
+            String id2 = modeloTablaSol.getValueAt(fila, 0).toString();
+            
             int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que sea continuar?", "No podrá revertir esta opcion", JOptionPane.YES_NO_OPTION);;
             if (opcion == JOptionPane.YES_OPTION) {
                 try {
-                    
                     PreparedStatement guardar = conection.prepareStatement("INSERT  fallassol (id,nombre,descripcion) VALUES (?,?,?)");
-                    guardar.setString(1, "0");
+                    guardar.setString(1, id);
                     guardar.setString(2, nombre);
                     guardar.setString(3, descripcion);
                     guardar.executeUpdate();
-                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE nombreF = ?");
-                    sentencia.setString(1, nombre);
+                    PreparedStatement sentencia = conection.prepareStatement("DELETE FROM fallas WHERE id = ?");
+                    sentencia.setString(1, id2);
                     int filas = sentencia.executeUpdate();
                     if (filas > 0) {
                         JOptionPane.showMessageDialog(null, "Se ha solucionado la falla", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         modeloTablaSol.removeRow(fila);
+                        mostrarDatosFallasSol();
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -247,6 +276,45 @@ public class RegYSeg extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSolucionarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        int fila = tablaFallas.getSelectedRow();
+        
+        int id = Integer.parseInt(this.tablaFallas.getValueAt(fila, 0).toString());
+        
+        String nombre = tablaFallas.getValueAt(fila, 1).toString();
+        String des = tablaFallas.getValueAt(fila, 2).toString();
+        
+        try {
+            PreparedStatement actu = conection.prepareStatement("UPDATE fallas SET nombreF='"+nombre+"',descripcionF='"+des+"' WHERE id= '"+id+"'");
+            actu.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Falla " + id + " Modificada");
+            mostrarDatosFallasSol();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e + " No se logró actualizar los datos");
+        }
+        
+//        String nombre = modeloTablaSol.getValueAt(fila, 0).toString();
+//        String id="";
+//        try {
+//            Statement leer = conection.createStatement();
+//            ResultSet a = leer.executeQuery("SELECT id FROM fallas WHERE nombreF='"+nombre+"'");
+//            id=String.valueOf(a);
+//        } catch (SQLException e) {
+//        }
+//        
+//        String nom = tablaFallas.getValueAt(fila, 0).toString();
+//        String des = tablaFallas.getValueAt(fila, 1).toString();
+//        
+//        try {
+//            PreparedStatement actu = conection.prepareStatement("UPDATE fallas SET nombreF='"+nom+"', descripcionF='"+des+"' WHERE id='"+id+"'");
+//            actu.executeUpdate();
+//            mostrarDatosFallasSol();
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e + " No se logró actualizar los datos");
+//        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +353,7 @@ public class RegYSeg extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSolucionar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
