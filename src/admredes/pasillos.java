@@ -39,7 +39,7 @@ public class pasillos extends javax.swing.JFrame {
         bAccesPoint = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout pPasilloLayout = new javax.swing.GroupLayout(pPasillo);
         pPasillo.setLayout(pPasilloLayout);

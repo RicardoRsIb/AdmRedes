@@ -41,7 +41,7 @@ public class entrada extends javax.swing.JFrame {
         bpc8 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout pEntradaLayout = new javax.swing.GroupLayout(pEntrada);
         pEntrada.setLayout(pEntradaLayout);

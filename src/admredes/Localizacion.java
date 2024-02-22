@@ -21,6 +21,8 @@ public class Localizacion extends javax.swing.JFrame {
     Site sitee = new Site();
     SalaEspera salaespe = new SalaEspera();
     salaComputo2 sala2 = new salaComputo2();
+    entrada entr = new entrada();
+    pasillos pass = new pasillos();
     
 
     public Localizacion() {
@@ -106,6 +108,11 @@ public class Localizacion extends javax.swing.JFrame {
         });
 
         Entrada.setText("Entrada");
+        Entrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntradaActionPerformed(evt);
+            }
+        });
 
         bSite.setText("Site");
         bSite.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +228,7 @@ public class Localizacion extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        pass.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiteActionPerformed
@@ -236,6 +244,11 @@ public class Localizacion extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void EntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntradaActionPerformed
+        // TODO add your handling code here:
+        entr.setVisible(true);
+    }//GEN-LAST:event_EntradaActionPerformed
 
     /**
      * @param args the command line arguments
