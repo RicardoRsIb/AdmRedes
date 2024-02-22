@@ -119,19 +119,16 @@ public class RegYSeg extends javax.swing.JFrame {
 
         tablaFallas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+
             }
         ));
         panelTabla.setViewportView(tablaFallas);
-        if (tablaFallas.getColumnModel().getColumnCount() > 0) {
-            tablaFallas.getColumnModel().getColumn(0).setPreferredWidth(1000);
-        }
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
